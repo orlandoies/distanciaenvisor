@@ -4,7 +4,10 @@ basic.forever(function () {
     distancia = maqueen.Ultrasonic(PingUnit.Centimeters)
     if (distancia < 9) {
         basic.showString("" + (distancia))
-    } else {
+        if (distancia < 3) {
+            basic.showString("" + (distancia))
+            maqueen.motorStop(maqueen.Motors.All)
+        }
         basic.showLeds(`
             # . # . #
             . # # # .
@@ -12,5 +15,7 @@ basic.forever(function () {
             . # # # .
             # . # . #
             `)
+    } else {
+    	
     }
 })
